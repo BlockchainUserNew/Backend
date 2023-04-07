@@ -5,6 +5,9 @@
 const multer = require('multer')
 const path = require('path')
 
+const timestamp = Date.now();
+const cleanStr = new Date(timestamp).toISOString().slice(0, 10);
+
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -15,7 +18,7 @@ const storage = multer.diskStorage({
         })
     },
     filename: function (req, file, cb) {
-        const name = Date.now() + '-' + file.originalname
+        const name = cleanStr + '-' + file.originalname
         cb(null, name, function (error, success) {
             if (error) {
                 console.log(error);

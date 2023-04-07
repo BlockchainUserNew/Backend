@@ -34,7 +34,7 @@ const Users = require('../model/user');
             file: req.body.file,
             userName: req.body.userName,
             // password: req.body.password,
-            cpassword: req.body.cpassword,
+            // cpassword: req.body.cpassword,
             active: req.body.active,
             // file: fileNames
             file: req.file.filename

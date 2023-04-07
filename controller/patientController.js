@@ -34,9 +34,10 @@ const addPatientDetail = async (req, res, next) => {
             // file: req.body.file,
             userName: req.body.userName,
             // password: req.body.password,
-            cpassword: req.body.cpassword,
+            // cpassword: req.body.cpassword,
             accesskey: req.body.accesskey,
             active: req.body.active,
+            history: req.body.history,
             // file: fileNames
             file: req.file.filename
         });

@@ -11,4 +11,6 @@ router.post("/view", patientReportDetailController.viewPatientReportDetail);
 
 router.get('/download/:filename', patientReportDetailController.downloadFile);
 
+router.get('/date', patientReportDetailController.viewPatientReportDates);
+
 module.exports = router

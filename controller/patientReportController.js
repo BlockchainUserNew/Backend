@@ -46,6 +46,22 @@ const viewPatientReportDetail = async (req, res, next) => {
   }
 };
 
+const viewPatientReportDates = async (req, res, next) => {
+  const viewreportdate = await PatientReportDetail.distinct('date');
+  // const viewreportdateWithProps = viewreportdate.map(date => ({ date }))
+  try {
+    if (!viewreportdate) {
+      return res
+        .status(400)
+        .json({ error: "Please try using correct accesskey " });
+    } else {
+      return res.status(200).json(viewreportdate );
+    }
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 const downloadFile = async (req, res, next) => {
   try {
     const filename = req.params.filename;
@@ -56,6 +72,6 @@ const downloadFile = async (req, res, next) => {
   }
 };
 
-console.log(__filename);
+// console.log(__filename);
 
-module.exports = { addPatientReportDetail, viewPatientReportDetail, downloadFile };
+module.exports = { addPatientReportDetail, viewPatientReportDetail, downloadFile, viewPatientReportDates };

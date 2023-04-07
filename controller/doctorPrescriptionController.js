@@ -32,8 +32,8 @@ const addDoctorPrescriptionDetail = async (req, res, next) => {
 
 const viewDoctorPrescriptionDetail = async (req, res, next) => {
   const viewprescription = await DoctorPrescriptionDetail.find(
-    { accesskey: req.body.accesskey },
-    { accesskey: 0 }
+    { },
+    { _id: 0 }
   );
   try {
     if (!viewprescription) {
@@ -48,15 +48,31 @@ const viewDoctorPrescriptionDetail = async (req, res, next) => {
   }
 };
 
-const viewPatientPrescriptionDetail = async (req, res, next) => {
+// const viewPatientPrescriptionDetail = async (req, res, next) => {
 
+//   try {
+//       const patdetails = await DoctorPrescriptionDetail.find({}, { _id:0 } );
+//       res.status(200).json(patdetails);
+//     } catch (err) {
+//       console.error(err);
+//       res.status(500).send('Server Error');
+//     }
+// }
+
+const viewPatientPrescriptionDates = async (req, res, next) => {
+  const viewprescriptiondate = await DoctorPrescriptionDetail.distinct('date');
+  // const viewreportdateWithProps = viewreportdate.map(date => ({ date }))
   try {
-      const patdetails = await DoctorPrescriptionDetail.find({}, { _id:0 } );
-      res.status(200).json(patdetails);
-    } catch (err) {
-      console.error(err);
-      res.status(500).send('Server Error');
+    if (!viewprescriptiondate) {
+      return res
+        .status(400)
+        .json({ error: "Please try using correct accesskey " });
+    } else {
+      return res.status(200).json(viewprescriptiondate);
     }
-}
+  } catch (e) {
+    console.log(e);
+  }
+};
 
-module.exports = { addDoctorPrescriptionDetail, viewDoctorPrescriptionDetail, viewPatientPrescriptionDetail };
+module.exports = { addDoctorPrescriptionDetail, viewDoctorPrescriptionDetail, viewPatientPrescriptionDates };

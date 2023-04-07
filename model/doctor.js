@@ -108,10 +108,10 @@ const doctorDetailSchema = new mongoose.Schema({
     //     required: true,
     // },
 
-    cpassword: {
-        type: String,
-        required: true,
-    },
+    // cpassword: {
+    //     type: String,
+    //     required: true,
+    // },
 
     active: {
         type: String,

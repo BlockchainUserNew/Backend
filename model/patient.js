@@ -95,10 +95,10 @@ const patientDetailSchema = new mongoose.Schema({
   //     required: true,
   // },
 
-  cpassword: {
-    type: String,
-    required: true,
-  },
+  // cpassword: {
+  //   type: String,
+  //   required: true,
+  // },
 
   accesskey: {
     type: String,
@@ -116,6 +116,10 @@ const patientDetailSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+
+  history: {
+    type: String
+  }
 });
 
 module.exports = mongoose.model("Patient", patientDetailSchema);
